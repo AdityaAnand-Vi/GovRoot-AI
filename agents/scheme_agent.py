@@ -1,6 +1,6 @@
 """Gemini RAG on policy PDFs (Long Context)."""
 import os
-import google.generativeai as genai
+from vertexai.generative_models import GenerativeModel
 from db.firestore_client import get_client
 
 def evaluate_scheme_eligibility(user_name: str) -> str:
@@ -44,7 +44,7 @@ def evaluate_scheme_eligibility(user_name: str) -> str:
         Process eligibility using the required structure.
         """
         
-        model = genai.GenerativeModel(
+        model = GenerativeModel(
             model_name="gemini-2.5-flash",
             system_instruction=SYSTEM_PROMPT
         )
