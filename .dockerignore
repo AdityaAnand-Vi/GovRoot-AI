@@ -1,0 +1,6 @@
+__pycache__
+*.pyc
+.env
+.git
+run_tests.py
+suggestive_governance.md

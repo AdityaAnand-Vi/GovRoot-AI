@@ -1,0 +1,7 @@
+UP Jal Jeevan Mission - Rural Water Subsidy Scheme 2024
+Eligibility:
+1. Resident of Sector Alpha, Beta, or Gamma.
+2. Annual household income < ₹1,00,000.
+3. Land holding < 2 hectares.
+4. No previous water subsidies in the last 3 fiscal years.
+Benefits: 50% subsidy on connection costs (max ₹25,000) via DBT to Jan Dhan accounts.

@@ -1,0 +1,3 @@
+This is a sample scheme text for testing RAG.
+The Gram Panchayat provides XYZ scheme for water pipe repairs under ABC policy.
+Funds are allocated up to 5000 INR per household.
