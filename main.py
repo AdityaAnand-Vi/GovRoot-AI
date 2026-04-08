@@ -4,10 +4,14 @@ from pydantic import BaseModel
 from agents.orchestrator import process_query
 from agents.report_agent import generate_weekly_report
 
-app = FastAPI(title="GramSeva AI Backend")
+app = FastAPI(title="GovRoot AI — Multi-Agent Governance System", description="AI-powered multi-agent system for rural governance", version="1.0.0")
+
+@app.get("/")
+def root():
+    return {"service": "GovRoot AI", "status": "running", "docs": "/docs"}
 
 class QueryRequest(BaseModel):
-    text: str
+    text: str = "Block 4 mein paani ki problem hai aur meeting fix karo"
 
 @app.post("/query")
 async def query_endpoint(request: QueryRequest):
