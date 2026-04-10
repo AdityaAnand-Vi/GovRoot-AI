@@ -6,3 +6,4 @@ mcp
 fastmcp
 google-cloud-aiplatform
 pydantic>=2.0
+google-adk
