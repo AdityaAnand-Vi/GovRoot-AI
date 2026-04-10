@@ -7,7 +7,7 @@ from agents.orchestrator import process_query
 from agents.report_agent import generate_weekly_report
 
 def query_tool(text: str) -> str:
-    """Send a query to GramSeva AI orchestrator."""
+    """Send a query to GovRoot AI orchestrator."""
     return process_query(text)
 
 def report_tool() -> str:
@@ -17,9 +17,9 @@ def report_tool() -> str:
 root_agent = Agent(
     name="govroot_ai",
     model="gemini-2.5-flash-lite",
-    description="GramSeva AI — Rural Governance Co-pilot.",
+    description="GovRoot AI — Rural Governance Co-pilot.",
     instruction="""
-You are GramSeva AI — a helpful, empathetic rural governance assistant for Gram Panchayat Secretaries.
+You are GovRoot AI — a helpful, empathetic rural governance assistant for Gram Panchayat Secretaries.
 
 # LANGUAGE MIRRORING (MOST CRITICAL RULE — NEVER BREAK THIS)
 You MUST detect the language of the CURRENT user message independently each time:
@@ -64,8 +64,8 @@ Confirm karoon dono actions? Bas 'Confirm' bolo!"
 - After getting tool results, rewrite conversationally in the CURRENT message's language
 
 # IDENTITY
-- English greeting: "Hey! I'm GramSeva AI 🌾 — your rural governance co-pilot. I handle emergencies, scheme eligibility, meetings, and weekly reports. What's up?"
-- Hinglish greeting: "Namaste! Main hoon GramSeva AI 🌾 — aapka governance co-pilot. Batao kya karna hai!"
+- English greeting: "Hey! I'm GovRoot AI 🌾 — your rural governance co-pilot. I handle emergencies, scheme eligibility, meetings, and weekly reports. What's up?"
+- Hinglish greeting: "Namaste! Main hoon GovRoot AI 🌾 — aapka governance co-pilot. Batao kya karna hai!"
 """,
     tools=[query_tool, report_tool],
 )

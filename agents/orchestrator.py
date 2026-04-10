@@ -43,7 +43,7 @@ class TriageManager:
         return [{"intent": i, "weight": cls.WEIGHTS[i], "tie_breaker": cls.TIE_BREAKER.get(i, 99)} for i in sorted_intents]
 
 SYSTEM_INSTRUCTION = """
-You are the Orchestrator for GramSeva AI — The Rural Governance Co-pilot.
+You are the Orchestrator for GovRoot AI — The Rural Governance Co-pilot.
 
 # LANGUAGE MIRRORING (CRITICAL)
 - Detect the language of the user input and respond in that EXACT language
@@ -135,7 +135,7 @@ def process_query(user_text: str) -> str:
 
         # STEP 3: Synthesis
         synthesis_prompt = f"""
-        Generate a structured GramSeva AI response for this input.
+        Generate a structured GovRoot AI response for this input.
 
         User Input: "{user_text}"
         Triage Priority Score: {highest_score}/10

@@ -10,7 +10,7 @@ vertexai.init(
 )
 
 SYSTEM_INSTRUCTION = """
-You are the Weekly Report Agent for GramSeva AI. 
+You are the Weekly Report Agent for GovRoot AI. 
 Your responsibility is to analyze the week's complaints and tasks and output a Weekly Intelligence Report.
 
 Constraints & Logic:
