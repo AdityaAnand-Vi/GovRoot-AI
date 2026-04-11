@@ -1,6 +1,6 @@
 import os
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from agents.orchestrator import process_query
 from agents.report_agent import generate_weekly_report
 
@@ -11,7 +11,7 @@ def root():
     return {"service": "GovRoot AI", "status": "running", "docs": "/docs"}
 
 class QueryRequest(BaseModel):
-    text: str = "Block 4 mein paani ki problem hai aur meeting fix karo"
+    text: str = Field(..., example="Block 4 mein paani ki problem hai aur meeting fix karo")
 
 @app.post("/query")
 async def query_endpoint(request: QueryRequest):

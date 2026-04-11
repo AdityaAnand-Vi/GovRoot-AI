@@ -3,6 +3,8 @@ import os
 from vertexai.generative_models import GenerativeModel
 from db.firestore_client import get_client
 
+_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def evaluate_scheme_eligibility(user_name: str) -> str:
     """
     Evaluates a user's eligibility for the Water Subsidy Scheme using Long Context RAG.
@@ -17,7 +19,7 @@ def evaluate_scheme_eligibility(user_name: str) -> str:
             return f"Error: No profile found for {user_name}."
             
         # 2. Read Long Context Policy Document
-        policy_path = os.path.join("policies", "water_subsidy_scheme.txt")
+        policy_path = os.path.join(_BASE_DIR, "policies", "water_subsidy_scheme.txt")
         with open(policy_path, "r", encoding="utf-8") as f:
             policy_text = f.read()
             
@@ -47,7 +49,7 @@ def evaluate_scheme_eligibility(user_name: str) -> str:
         model = GenerativeModel(
             model_name="gemini-2.5-flash",
             system_instruction=SYSTEM_PROMPT
-        )
+        )  # noqa: model pinned to gemini-2.5-flash
         response = model.generate_content(prompt)
         return response.text
     except Exception as e:

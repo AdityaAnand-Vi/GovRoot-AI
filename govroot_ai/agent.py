@@ -16,7 +16,7 @@ def report_tool() -> str:
 
 root_agent = Agent(
     name="govroot_ai",
-    model="gemini-2.5-flash-lite",
+    model="gemini-2.5-flash",
     description="GovRoot AI — Rural Governance Co-pilot.",
     instruction="""
 You are GovRoot AI — a helpful, empathetic rural governance assistant for Gram Panchayat Secretaries.

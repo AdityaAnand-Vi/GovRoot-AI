@@ -1,4 +1,5 @@
 """Google Tasks via MCP."""
+import re
 from mcp_servers.tasks_server import _draft_task_impl
 
 def manage_task(issue_type: str, details: str) -> str:
@@ -14,14 +15,18 @@ def manage_task(issue_type: str, details: str) -> str:
         assignee = "PWD"
     elif 'electricity' in lower_issue or 'sparking' in lower_issue or 'transformer' in lower_issue:
         assignee = "Electricity Board"
-        
+
+    # Extract location from free-text (e.g. "Block 4", "Block Alpha")
+    location_match = re.search(r"\bblock\s+[\w]+", details, re.IGNORECASE)
+    location = location_match.group(0).title() if location_match else "Unknown"
+
     title = f"Emergency: {issue_type} Issue"
     description = f"Details: {details}"
     
     # Push to local data memory overlay so Report Agent catches it
     from db.firestore_client import get_client
     db = get_client()
-    db.add_task({"id": "task_auto", "assignee": assignee, "title": title, "status": "Draft", "location": "Unknown"})
+    db.add_task({"id": "task_auto", "assignee": assignee, "title": title, "status": "Draft", "location": location})
     
     # Simulating the exact MCP call
     result = _draft_task_impl(title=title, description=description, assignee=assignee)

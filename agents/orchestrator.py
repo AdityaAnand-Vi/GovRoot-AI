@@ -15,7 +15,7 @@ vertexai.init(
 
 def get_model(system_instruction=None):
     return GenerativeModel(
-        model_name="gemini-2.5-flash-lite",
+        model_name="gemini-2.5-flash",
         system_instruction=system_instruction
     )
 
@@ -97,7 +97,7 @@ def process_query(user_text: str) -> str:
             raw_val = raw_val.split("```")[1].split("```")[0]
         try:
             parsed_intent = json.loads(raw_val.strip())
-        except:
+        except (json.JSONDecodeError, ValueError):
             parsed_intent = {"intents": ["admin"], "user_mentioned": "Unknown"}
 
         intents_list = parsed_intent.get("intents", [])

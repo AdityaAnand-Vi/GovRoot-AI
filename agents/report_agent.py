@@ -1,13 +1,8 @@
-import os
 import json
-import vertexai
 from vertexai.generative_models import GenerativeModel
 from db.firestore_client import get_client
 
-vertexai.init(
-    project=os.getenv("GOOGLE_CLOUD_PROJECT"),
-    location=os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
-)
+# vertexai.init() is called once at startup in orchestrator.py
 
 SYSTEM_INSTRUCTION = """
 You are the Weekly Report Agent for GovRoot AI. 
@@ -34,7 +29,7 @@ def generate_weekly_report() -> str:
     
     try:
         model = GenerativeModel(
-            model_name="gemini-2.5-flash-lite",
+            model_name="gemini-2.5-flash",
             system_instruction=SYSTEM_INSTRUCTION
         )
         response = model.generate_content(prompt)
