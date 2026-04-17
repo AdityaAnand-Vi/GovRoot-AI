@@ -137,7 +137,7 @@ The **primary interface**. A Google ADK `Agent` wrapping `process_query` and `ge
 - Per-message language detection (English / Hinglish / Hindi)
 - Warm, empathetic conversational reformatting of backend output
 - Identity / greeting handling
-- Model: `gemini-2.5-flash-lite`
+- Model: `gemini-2.5-flash`
 
 ### `agents/orchestrator.py` — The Backend Brain
 Runs a **3-step pipeline** for every query:
@@ -353,4 +353,4 @@ Covers the orchestrator's key scenarios:
 
 ---
 
-*Built for rural India — powered by Gemini 2.5 Flash Lite on Vertex AI and Google ADK.* 🌾
+*Built for rural India — powered by Gemini 2.5 Flash on Vertex AI and Google ADK.* 🌾
